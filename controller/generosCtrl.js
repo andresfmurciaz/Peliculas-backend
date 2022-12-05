@@ -20,18 +20,7 @@ genero.save()
 }
 
 
-    //res.send("ok")
-
-
-
 }
-
-
-
-
-
-
-
 
 
 module.exports={

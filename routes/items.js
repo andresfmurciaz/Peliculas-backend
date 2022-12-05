@@ -6,7 +6,8 @@ const itemsController= require('../controller/itemsCtrl')
 
 router.post('/items',itemsController.itemsSave)
 router.get('/items',itemsController.itemsListar)
-
+router.put('/items',itemsController.itemActualizar)
+router.delete('/items/:id',itemsController.itemEliminar)
 
 
 module.exports= router

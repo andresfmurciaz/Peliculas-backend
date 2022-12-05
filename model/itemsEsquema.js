@@ -3,8 +3,6 @@ const mongosee = require('mongoose')
 const itemsEsquema = mongosee.Schema(
 
 {
-    
-        
         titulo :{
             type:String,
             required:true,
@@ -34,20 +32,15 @@ const itemsEsquema = mongosee.Schema(
         reparto: {
                 type:Array
         },
-        
         created_at: {
             type:Date,
             default:Date.now()
         },
-
         created_por: { 
             type:String,
             required:true,
              trim:true
-
-
         }
-      
 }
 )
 module.exports = mongosee.model("items",itemsEsquema)
