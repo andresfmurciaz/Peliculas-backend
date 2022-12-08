@@ -22,7 +22,8 @@ app.get('/',(req,res)=>{
 //})
 app.use(express.json())
 app.use(cors())
-
+//para que se puedan consultar las imgenes desde la api se le debe dar permisos de escritura
+app.use(express.static('public'))
 app.use('/',require ('./routes/paginas').router)
 
 app.use('/api',require('./routes/api'))
