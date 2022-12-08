@@ -5,6 +5,7 @@ const usuarioController= require('../controller/usuariosCtrl')
 
 
 router.post('/usuarios',usuarioController.usuarioLogin)
+router.post('/usuarios/save',usuarioController.usuarioSave)
 router.get('/usuarios',usuarioController.usuarioListar)
 
 

@@ -1,5 +1,5 @@
 const usuarioModel = require('../model/usuariosEsquema')
-
+const bcryptjs = require('bcryptjs')
 const usuarioListar=async(req,res) =>{
 
  
@@ -10,17 +10,21 @@ const usuarioListar=async(req,res) =>{
 }
 
 
-const usuarioSave=(req,res) =>{
+const usuarioSave= async( req,res) =>{
     console.log(req.body)
 try {
 
 const usuario = new usuarioModel(req.body)
-usuario.save()
- res.send("usuario guardado")
+usuario.contrasena=await bcryptjs.hash(usuario.contrasena,10)
+await usuario.save()
+res.status(200).json({msj:"usuario creado"})
+ //res.send("usuario guardado")
 
-} catch (error) {
-    console.log("error")
+} catch (err) {
+ 
+    res.status(400).json({msj:"error creado"})
 }
+
     //res.send("ok")
 }
 
@@ -54,11 +58,6 @@ if(usuario==""){
     res.status(200).json({msj:"ok"})
 
 }
-
-
-   
-
-
 
 
 }
