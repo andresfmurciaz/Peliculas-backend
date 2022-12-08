@@ -40,7 +40,13 @@ const itemsEsquema = mongosee.Schema(
             type:String,
             required:true,
              trim:true
+        },
+        img: { 
+            type:String,
+            required:true,
+             trim:true
         }
+
 }
 )
 module.exports = mongosee.model("items",itemsEsquema)

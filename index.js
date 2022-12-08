@@ -6,6 +6,7 @@ const app = express()
 
 const puerto = 3000 
 const db=require('./config/db')
+const cors= require('cors')
 
 //const generos= require('./controller/generosCtrl')
 
@@ -20,6 +21,7 @@ app.get('/',(req,res)=>{
   //  res.send("hola mor soy about")
 //})
 app.use(express.json())
+app.use(cors())
 
 app.use('/',require ('./routes/paginas').router)
 
