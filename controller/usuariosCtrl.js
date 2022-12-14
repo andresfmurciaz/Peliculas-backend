@@ -1,5 +1,6 @@
 const usuarioModel = require('../model/usuariosEsquema')
 const bcryptjs = require('bcryptjs')
+const jwt = require ('jsonwebtoken')
 const usuarioListar=async(req,res) =>{
 
  
@@ -53,9 +54,38 @@ let usuario = await usuarioModel.find({'correo':correo,'contrasena':contrasena})
 console.log(usuario)
 
 if(usuario==""){
+
     res.status(400).json({msj:"no"})
+
 }else{
-    res.status(200).json({msj:"ok"})
+
+
+
+const payload={
+
+usuario:{
+
+    id:usuario.id,
+    nombre:usuario.nombre
+}   
+}
+    jwt.sign(
+    payload,
+    "palabrasecreta",
+    (error,token)=>{
+    if (error)throw error
+    res.status(200).json({msj:"ok acce so concedido", token:token})
+})
+
+
+
+
+
+
+
+
+
+    //res.status(200).json({msj:"ok"})
 
 }
 
