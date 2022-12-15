@@ -55,8 +55,9 @@ let correcto = true
 let usuario = await usuarioModel.findOne({'correo':correo})
 console.log(usuario+ "usuario de BD")
 console.log(usuario.correo)
+//compara el la contaseña del front con la contraseña del la BD
 correcto = await bcryptjs.compare(contrasena,usuario.contrasena)
-
+//si son iguales no entra al if y entra al else donde se crea el token
 if(!correcto){
     console.log("no encontrado usu")
     res.status(400).json({msj:"no"})
