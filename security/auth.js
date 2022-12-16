@@ -13,5 +13,15 @@ module.exports= async (req,res,next)=>{
     if(!token){
 res.status(400).json({msj:"token no encontrado"})
     }
-     next()
+
+try {
+    const payload = jwt.verify(token,"palabrasecreta")
+    req.usuario =payload.nombre
+    console.log("token confirmado")
+    console.log(payload)
+    next()
+} catch (error) {
+    res.status(400).json({msj:"error en token" })
+}
+
 }
