@@ -23,6 +23,25 @@ const item = new itemModel(req.body)
 
 }
 
+//buscar una pelicula por un id
+
+const itemObtener= async(req,res)=>{
+const id = req.params.id
+console.log(id)
+try {
+    const c = await itemModel.findOne({_id:id})
+    res.status(200).json(c)
+} catch (error) {
+if(error){
+
+    console.log("erro"+error)
+    res.status(400).send("error iem ontener")
+}    
+}
+
+}
+
+
 
 
 //actualizar
@@ -100,5 +119,6 @@ module.exports={
     itemsListar,
     itemsSave,
     itemActualizar,
-    itemEliminar
+    itemEliminar,
+    itemObtener
 };
