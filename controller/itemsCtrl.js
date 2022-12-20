@@ -50,7 +50,7 @@ const itemActualizar = async (req,res)=>{
 console.log(req.body)
 
 try {
-    const{id,titulo}= req.body
+    const{id,titulo,img}= req.body
 
     if(id==''){
         res.send("id no existe")
@@ -61,10 +61,12 @@ try {
 
         const item={}
         item.titulo=titulo
+        item.img=img
         const rta= await itemModel.updateOne(
         {_id :id},
         {$set : item},
-        {new :true}
+        {new :true},
+        
         )
         console.log('actualizado')
     res.send('ok actualizacion')
